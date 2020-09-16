@@ -1,8 +1,0 @@
-${AnsiColor.BRIGHT_CYAN}     _                    _
-${AnsiColor.BRIGHT_CYAN}    / \     _ __    ___  | |__     ___   _ __
-${AnsiColor.BRIGHT_CYAN}   / _ \   | '__|  / __| | '_ \   / _ \ | '__|
-${AnsiColor.BRIGHT_CYAN}  / ___ \  | |    | (__  | | | | |  __/ | |
-${AnsiColor.BRIGHT_CYAN} /_/   \_\ |_|     \___| |_| |_|  \___| |_|
-
-
-${AnsiColor.BLUE}:: Archer :: ${spring.application.name}:${AnsiColor.RED}${blade.env}${AnsiColor.BLUE} :: Running SpringBoot ${spring-boot.version} :: ${AnsiColor.BRIGHT_BLACK}
