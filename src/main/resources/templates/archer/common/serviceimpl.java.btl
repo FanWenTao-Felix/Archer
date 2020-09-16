@@ -1,0 +1,17 @@
+package ${plan.packagePath!}${strutil.replace(file.filePath,"/",".")};
+
+import org.springblade.core.mp.base.BaseServiceImpl;
+import ${plan.packagePath!}.entity.${model.modelClass!}Entity;
+import ${plan.packagePath!}.mapper.${model.modelClass!}Mapper;
+import ${plan.packagePath!}.service.I${model.modelClass!}Service;
+import org.springframework.stereotype.Service;
+
+/**
+ * ${model.modelRemark!} 服务实现类
+ *
+ * @author Chill
+ */
+@Service
+public class ${model.modelClass!}ServiceImpl extends BaseServiceImpl<${model.modelClass!}Mapper, ${model.modelClass!}Entity> implements I${model.modelClass!}Service {
+
+}

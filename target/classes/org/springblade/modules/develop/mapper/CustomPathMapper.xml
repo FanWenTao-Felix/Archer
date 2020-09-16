@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.springblade.modules.develop.mapper.CustomPathMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="customPathResultMap" type="org.springblade.modules.develop.entity.CustomPath">
+        <id column="id" property="id"/>
+        <result column="create_user" property="createUser"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_user" property="updateUser"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="status" property="status"/>
+        <result column="is_deleted" property="isDeleted"/>
+        <result column="path_name" property="pathName"/>
+        <result column="path_value" property="pathValue"/>
+        <result column="path_category" property="pathCategory"/>
+        <result column="validate_sort" property="validateSort"/>
+    </resultMap>
+
+
+    <select id="selectCustomPathPage" resultMap="customPathResultMap">
+        select * from gen_custom_path where is_deleted = 0
+    </select>
+
+</mapper>

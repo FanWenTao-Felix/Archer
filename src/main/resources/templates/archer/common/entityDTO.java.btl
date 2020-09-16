@@ -1,0 +1,18 @@
+package ${plan.packagePath!}${strutil.replace(file.filePath,"/",".")};
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import ${plan.packagePath!}.entity.${model.modelClass!}Entity;
+
+/**
+ * ${model.modelRemark!} 模型DTO
+ *
+ * @author Chill
+ */
+@Data
+@EqualsAndHashCode(callSuper = true)
+public class ${model.modelClass!}DTO extends ${model.modelClass!}Entity {
+
+	private static final long serialVersionUID = 1L;
+
+}

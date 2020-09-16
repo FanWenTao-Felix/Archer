@@ -1,0 +1,101 @@
+package ${plan.packagePath!}${strutil.replace(file.filePath,"/",".")};
+
+import io.swagger.annotations.Api;
+import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import lombok.AllArgsConstructor;
+import javax.validation.Valid;
+import org.springblade.core.boot.ctrl.BladeController;
+import org.springblade.common.constant.CommonConstant;
+
+import org.springblade.core.mp.support.Condition;
+import org.springblade.core.mp.support.Query;
+import org.springblade.core.tool.api.R;
+import org.springblade.core.tool.utils.Func;
+import org.springframework.web.bind.annotation.*;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+
+import ${plan.packagePath!}.entity.${model.modelClass!}Entity;
+import ${plan.packagePath!}.vo.${model.modelClass!}VO;
+import ${plan.packagePath!}.wrapper.${model.modelClass!}Wrapper;
+import ${plan.packagePath!}.service.I${model.modelClass!}Service;
+
+
+/**
+ * ${model.modelRemark!} 控制器
+ *
+ * @author Chill
+ */
+@RestController
+@AllArgsConstructor
+@RequestMapping("/${serviceName!}/${model.modelCode!}")
+@Api(value = "${model.modelRemark!}", tags = "${model.modelRemark!}")
+public class ${model.modelClass!}Controller extends BladeController {
+
+	private final I${model.modelClass!}Service ${model.modelCode!}Service;
+
+	/**
+	 * 详情
+	 */
+	@GetMapping("/detail")
+	@ApiOperationSupport(order = 1)
+	@ApiOperation(value = "详情", notes = "传入${model.modelCode!}")
+	public R<${model.modelClass!}Entity> detail(${model.modelClass!}Entity ${model.modelCode!}) {
+		${model.modelClass!}Entity detail = ${model.modelCode!}Service.getOne(Condition.getQueryWrapper(${model.modelCode!}));
+		return R.data(detail);
+	}
+
+	/**
+	 * 分页 代码自定义代号
+	 */
+	@GetMapping("/list")
+	@ApiOperationSupport(order = 2)
+	@ApiOperation(value = "分页", notes = "传入${model.modelCode!}")
+	public R<IPage<${model.modelClass!}Entity>> list(${model.modelClass!}Entity ${model.modelCode!}, Query query) {
+		IPage<${model.modelClass!}Entity> pages = ${model.modelCode!}Service.page(Condition.getPage(query), Condition.getQueryWrapper(${model.modelCode!}));
+		return R.data(pages);
+	}
+
+	/**
+	 * 新增 代码自定义代号
+	 */
+	@PostMapping("/save")
+	@ApiOperationSupport(order = 4)
+	@ApiOperation(value = "新增", notes = "传入${model.modelCode!}")
+	public R save(@Valid @RequestBody ${model.modelClass!}Entity ${model.modelCode!}) {
+		return R.status(${model.modelCode!}Service.save(${model.modelCode!}));
+	}
+
+	/**
+	 * 修改 代码自定义代号
+	 */
+	@PostMapping("/update")
+	@ApiOperationSupport(order = 5)
+	@ApiOperation(value = "修改", notes = "传入${model.modelCode!}")
+	public R update(@Valid @RequestBody ${model.modelClass!}Entity ${model.modelCode!}) {
+		return R.status(${model.modelCode!}Service.updateById(${model.modelCode!}));
+	}
+
+	/**
+	 * 新增或修改 代码自定义代号
+	 */
+	@PostMapping("/submit")
+	@ApiOperationSupport(order = 6)
+	@ApiOperation(value = "新增或修改", notes = "传入${model.modelCode!}")
+	public R submit(@Valid @RequestBody ${model.modelClass!}Entity ${model.modelCode!}) {
+		return R.status(${model.modelCode!}Service.saveOrUpdate(${model.modelCode!}));
+	}
+
+
+	/**
+	 * 删除 代码自定义代号
+	 */
+	@PostMapping("/remove")
+	@ApiOperationSupport(order = 7)
+	@ApiOperation(value = "逻辑删除", notes = "传入ids")
+	public R remove(@ApiParam(value = "主键集合", required = true) @RequestParam String ids) {
+		return R.status(${model.modelCode!}Service.deleteLogic(Func.toLongList(ids)));
+	}
+
+}
